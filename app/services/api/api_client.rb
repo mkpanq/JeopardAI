@@ -13,7 +13,7 @@ module Api
     def post_request(body)
       response = @client.post { |req| req.body = body.to_json }
 
-      response.success? ? JSON.parse(response.body) : raise(AIGenerationError.new(response.body))
+      response.success? ? JSON.parse(response.body) : raise(AIGenerationError.new(JSON.parse(response.body)["error"]["message"]))
     end
   end
 end
