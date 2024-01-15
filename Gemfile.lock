@@ -96,6 +96,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
+    foreman (0.87.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -179,9 +180,16 @@ GEM
     rake (13.1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
+    redis-client (0.19.1)
+      connection_pool
     reline (0.4.2)
       io-console (~> 0.5)
     ruby2_keywords (0.0.5)
+    sidekiq (7.2.0)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -210,8 +218,10 @@ DEPENDENCIES
   debug
   dotenv-rails
   faraday (~> 2.9)
+  foreman (~> 0.87.2)
   puma (>= 5.0)
   rails (~> 7.1.2)
+  sidekiq (~> 7.2)
   sprockets-rails
   tzinfo-data
 
