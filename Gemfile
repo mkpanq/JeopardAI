@@ -15,6 +15,8 @@ gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.3'
 
 gem 'foreman', '~> 0.87.2'
 
+gem "redis", "~> 5.0"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'dotenv-rails'
