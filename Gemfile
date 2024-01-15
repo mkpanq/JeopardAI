@@ -12,6 +12,7 @@ gem "faraday", "~> 2.9"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#home"
+  get "generate_image" => "external_api#generate_image"
 end
