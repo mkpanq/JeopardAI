@@ -1,0 +1,11 @@
+:concurrency: 3
+:timeout: 60
+:verbose: true
+:queues:
+  - default
+:scheduler:
+  :schedule:
+    TestHelloWorldJob:
+      every: 1s
+      queue: default
+      description: "Test Job"
