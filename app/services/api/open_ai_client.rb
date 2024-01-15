@@ -19,7 +19,7 @@ module Api
 
       response.dig("data", 0, "url")
     rescue => e
-      return "Error during image generation - #{e.message}"
+      raise "Error during image generation - #{e.message}"
     end
 
     def get_prompt
@@ -45,7 +45,7 @@ module Api
 
       response.dig("choices", 0, "message", "content")
     rescue => e
-      return "Error during prompt generation - #{e.message}"
+      raise "Error during prompt generation - #{e.message}"
     end
   end
 end
