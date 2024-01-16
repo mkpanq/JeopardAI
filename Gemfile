@@ -17,6 +17,8 @@ gem 'foreman', '~> 0.87.2'
 
 gem "redis", "~> 5.0"
 
+gem 'tailwindcss-rails', '~> 2.3'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'dotenv-rails'

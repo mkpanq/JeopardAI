@@ -4,6 +4,7 @@
 :queues:
   - default
 :scheduler:
+  enabled: false
   :schedule:
     TestHelloWorldJob:
       every: 1s
