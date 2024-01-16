@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   def answer
     @errors = 0
     answer_table = params[:answer].downcase.split(" ")
+
     @prompt.downcase.split(" ").each_with_index do |prompt_word, index|
       prompt_word == answer_table[index] ? @errors : @errors += 1
     end

@@ -1,5 +1,5 @@
 <% if @errors == 0 %>
-  <%= render_turbo_stream_flash_messages("This is OK !")  %>
+  <%= render_turbo_stream_flash_messages("Yes, you're right ! Congrats !")  %>
 <% else %>
-  <%= render_turbo_stream_flash_messages("This is Wrong !")  %>
+  <%= render_turbo_stream_flash_messages("Wrong answer - #{@errors} wrong words")  %>
 <% end %>
