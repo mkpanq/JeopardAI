@@ -1,14 +1,31 @@
-<div class="flex flex-col mx-auto space-y-3">
-  <div> <%= image_tag("prompt_image.jpg", class: "rounded-xl") %> </div>
-    <div class="text-center">
+<div class="flex flex-col mx-auto space-y-5 px-0">
+  <div class="mx-auto font-bold text-center text-white space-y-3 max-w-[512px]
+              bg-gradient-to-tl from-yellow-500 via-purple-500 to-blue-500
+              shadow-md rounded-xl px-10 py-3">
+    <h1 class="text-3xl">JeopardAI</h1>
+    <h2 class="text-xl">Guess today's prompt !</h2>
+  </div>
+    <div class="flex flex-row justify-center align-center overflow-hidden px-12">
+        <%= image_tag("prompt_image.jpg", class: "justify-center object-cover rounded-xl max-w-[512px]") %>
+    </div>
+    <div class="text-center text-2xl mx-auto">
+      <%= turbo_frame_tag 'answer_results_frame' do %>
+      <% end %>
+    </div>
+    <div class="text-center space-y-3">
+      <div class="text-2xl">
+        <% @prompt_size.each do |word| %>
+          <% word[1].times do %> <span class="text-white">_</span> <% end %>&nbsp;
+        <% end %>
+      </div>
 
-      <p>Enter prompt (<%= @prompt_size %> words):</p>
-
-      <%= turbo_frame_tag 'answer_results_frame' do %><% end %>
-
-      <%= form_with url: "/answer", method: :post, class: "flex flex-col items-center"  do |form| %>
-        <%= form.text_field "answer", value: params[:answer] %>
-        <%= form.submit "Check !" %>
+      <%= form_with url: "/answer", method: :post, class: "flex flex-col items-center space-y-3"  do |form| %>
+        <%= form.text_field "answer", class: 'w-3/5 py-3 rounded-md shadow-md' %>
+        <%= form.submit "Check !",
+                        class:'
+                        font-bold text-white
+                        bg-gradient-to-tl from-yellow-500 via-purple-500 to-blue-500
+                        shadow-md border rounded-xl px-20 py-3 border-slate-600' %>
       <% end %>
     </div>
 </div>

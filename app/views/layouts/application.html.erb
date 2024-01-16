@@ -11,8 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="h-screen w-screen bg-auto
+               bg-gradient-to-b from-orange-300 via-violet-500 to-orange-300
+               md:bg-gradient-to-tr from-violet-500 to-orange-300">
+    <main class=" mx-auto mt-20 flex">
       <%= yield %>
     </main>
   </body>

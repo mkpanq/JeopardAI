@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :get_prompt
 
   def home
-    @prompt_size = @prompt.split(" ").size
+    @prompt_size = @prompt.split(" ").each_with_index.map { |word, index| [index, word.size] }
   end
 
   def answer

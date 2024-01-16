@@ -1,1 +1,9 @@
-<%= message %>
+<% if correct %>
+  <div class="text-white max-w-[512px] px-10 py-3 rounded-xl shadow-xl bg-orange-400">
+    <%= message %>
+  </div>
+<% else %>
+  <div class="text-white max-w-[512px] px-10 py-3 rounded-xl shadow-xl bg-violet-700">
+    <%= message %>
+  </div>
+<% end %>
