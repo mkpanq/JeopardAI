@@ -6,18 +6,13 @@ class HomeController < ApplicationController
   end
 
   def answer
-    errors = 0
+    @errors = 0
     answer_table = params[:answer].downcase.split(" ")
     @prompt.downcase.split(" ").each_with_index do |prompt_word, index|
-      prompt_word == answer_table[index] ? errors : errors += 1
-    end
-    if errors == 0
-      flash[:success] = "Correct answer!"
-    else
-      flash[:danger] = "Wrong answer! There are #{errors} wrong words."
+      prompt_word == answer_table[index] ? @errors : @errors += 1
     end
 
-    redirect_to root_path, params: { answer: params[:answer] }
+    turbo_stream
   end
 
   private
