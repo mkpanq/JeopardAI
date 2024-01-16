@@ -1,11 +1,16 @@
-
 <div class="flex flex-col mx-auto space-y-3">
+
+  <% flash.each do |type, msg| %>
+    <div class="text-center"> <%= msg %> </div>
+  <% end %>
+
   <div> <%= image_tag("prompt_image.jpg", class: "rounded-xl") %> </div>
 
   <div class="text-center">
-    <%= form_with url: "/answer", method: :post do |form| %>
-      <%= form.label :answer, "Enter prompt:" %>
-      <%= form.text_field :answer %>
+    <p>Enter prompt (<%= @prompt_size %> words):</p>
+
+    <%= form_with url: "/answer", method: :post, class: "flex flex-col items-center"  do |form| %>
+      <%= form.text_field "answer", value: params[:answer] %>
       <%= form.submit "Check !" %>
     <% end %>
   </div>
