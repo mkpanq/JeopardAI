@@ -4,6 +4,7 @@
               shadow-md rounded-xl px-10 py-3">
     <h1 class="text-3xl">JeopardAI</h1>
     <h2 class="text-xl">Guess today's prompt !</h2>
+    <h3 class="text-md"><%= @generated_at %></h3>
   </div>
   <div class="flex flex-row justify-center align-center overflow-hidden px-12">
       <%= image_tag("prompt_image.jpg", class: "justify-center object-cover rounded-xl max-w-[512px]") %>

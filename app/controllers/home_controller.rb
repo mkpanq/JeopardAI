@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :get_redis_client, :get_prompt_helper
+  before_action :get_redis_client, :get_prompt_helpers
   before_action :get_prompt, only: [:answer]
   def home
   end
@@ -21,8 +21,9 @@ class HomeController < ApplicationController
     @redis ||= Redis.new
   end
 
-  def get_prompt_helper
+  def get_prompt_helpers
     @prompt_helper = @redis.get("prompt_helper")
+    @generated_at = @redis.get("generated_at")
   end
 
   def get_prompt

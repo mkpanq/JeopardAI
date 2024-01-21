@@ -20,6 +20,7 @@ class DailyGenerationJob < ApplicationJob
       transformed_str.split("").join(" ")
     end.join(";")
 
+    redis.set("generated_at", Date.today.to_formatted_s(:long))
     redis.set("prompt", prompt)
     redis.set("prompt_helper", prompt_helper)
     redis.set("image_url", image_url)
