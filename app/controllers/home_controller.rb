@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   before_action :get_redis_client, :get_prompt_helper
   before_action :get_prompt, only: [:answer]
   def home
-    p @prompt_helper
   end
 
   def answer
