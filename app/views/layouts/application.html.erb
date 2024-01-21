@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
   <head>
     <title>JeopardAi</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,9 +10,23 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="mx-auto bg-gray-900">
+  <body class="mx-auto bg-gray-900 flex flex-col min-h-screen justify-between">
+
     <main class="mx-auto mt-20 flex">
       <%= yield %>
     </main>
+
+    <footer class="flex flex-col space-y-2.5 text-gray-500 mx-auto mb-10">
+      <div class="flex flex-col justify-center space-y-2">
+        <div class="text-center md:pr-4">Created by Marek Pankowski &copy; <%= Date.today.year %></div>
+        <div class="flex flex-row justify-center space-x-2">
+          <a href="https://mkpanq.com">mkpanq.com</a>
+          <a href="https://x.com/mkpanq">Twitter</a>
+          <a href="https://github.com/mkpanq">Github</a>
+          <a href="https://bento.me/mkpanq">Bento</a>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
