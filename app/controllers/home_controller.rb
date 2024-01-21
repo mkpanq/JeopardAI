@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
-  before_action :get_prompt
-
+  before_action :get_redis_client, :get_prompt_helper
+  before_action :get_prompt, only: [:answer]
   def home
-    @prompt_size = @prompt.split(" ").each_with_index.map { |word, index| [index, word.size] }
+    p @prompt_helper
   end
 
   def answer
@@ -18,7 +18,15 @@ class HomeController < ApplicationController
 
   private
 
+  def get_redis_client
+    @redis ||= Redis.new
+  end
+
+  def get_prompt_helper
+    @prompt_helper = @redis.get("prompt_helper")
+  end
+
   def get_prompt
-    @prompt = Redis.new.get("prompt")
+    @prompt = @redis.get("prompt")
   end
 end

@@ -4,9 +4,9 @@
 :queues:
   - default
 :scheduler:
-  enabled: false
   :schedule:
-    TestHelloWorldJob:
-      every: 1s
+    DailyGenerationJob:
+      enabled: false
+      every: 60s
       queue: default
-      description: "Test Job"
+      description: "Generate daily Open AI image jeopardy"

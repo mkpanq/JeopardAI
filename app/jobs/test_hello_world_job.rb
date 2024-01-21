@@ -2,7 +2,6 @@ require "sidekiq-scheduler"
 require "redis"
 require "open-uri"
 
-# TODO: Add Active Cache to store prompt and image url
 class TestHelloWorldJob < ApplicationJob
   queue_as :default
 

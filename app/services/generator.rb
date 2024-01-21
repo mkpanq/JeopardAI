@@ -1,6 +1,6 @@
 class Generator
   def initialize
-    @open_ai_client = OpenAiClient.new
+    @open_ai_client = Api::OpenAiClient.new
   end
 
   def call
