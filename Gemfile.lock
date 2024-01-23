@@ -231,6 +231,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.4)
+      tzinfo (>= 1.0.0)
     uri (0.13.0)
     webrick (1.8.1)
     websocket-driver (0.7.6)
@@ -257,6 +259,7 @@ DEPENDENCIES
   sprockets-rails
   tailwindcss-rails (~> 2.3)
   turbo-rails (~> 1.5)
+  tzinfo
   tzinfo-data
 
 RUBY VERSION
