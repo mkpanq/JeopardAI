@@ -21,15 +21,12 @@ RUN apk update && \
     redis \
     git curl && \
     rm -rf /var/cache/apk/* && \
-    \
-    \
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf && \
-    echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
-    echo ". $HOME/.asdf/asdf.sh" >> ~/.zshrcs && \
-    source ~/.bashrc && \
-    \
-    \
-    asdf plugin add ruby && \
+    git clone https://github.com/asdf-vm/asdf.git /usr/local/asdf
+
+ENV ASDF_DATA_DIR="/usr/local/asdf" \
+    PATH="$PATH:/usr/local/asdf/bin:/usr/local/asdf/shims"
+
+RUN asdf plugin add ruby && \
     asdf plugin add nodejs && \
     asdf plugin add yarn &&  \
     mkdir app
@@ -39,32 +36,38 @@ WORKDIR /root/app
 
 # Copy .tool-versions file & install versions from .tool-versions file
 COPY .tool-versions .
-RUN source ~/.bashrc && asdf install
+RUN asdf install
 
 # Set Rails production environments
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    PATH="$PATH:/usr/local/bundle/bin"
 
 FROM image_base as application_base
 
 # Install Ruby packages
 COPY Gemfile Gemfile.lock ./
-RUN source ~/.bashrc && bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+RUN bundle install && rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+#RUN source ~/.bashrc && bundle install && \
+#    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
 # Copy application code
 COPY . .
 
 # Precompile assets
-RUN source ~/.bashrc && SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+#RUN source ~/.bashrc && SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+
+# TODO: PROBLEM WITH BUNDLER -> COULD NOT LOCATE GEMFILE
 
 # Final stage for app image
 FROM application_base as prod_app
 COPY --from=application_base /usr/local/bundle /usr/local/bundle
 COPY --from=application_base /root/app /root/app
-
+COPY --from=application_base /usr/local/asdf /usr/local/asdf
+RUN asdf reshim
 # Run and own only the runtime files as a non-root user for security
 RUN adduser --disabled-password \
             --gecos "" \
@@ -74,7 +77,7 @@ RUN adduser --disabled-password \
     chown -R docker_user log tmp
 
 USER docker_user
-
-## Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
-CMD ["./bin/prod"]
+RUN bash
+#ENTRYPOINT ["bash", "-c"]
+#EXPOSE 3000
+#CMD ["source /root/.bashrc && bundle exec foreman start -f Procfile.prod"]
