@@ -22,8 +22,8 @@ gem 'turbo-rails', '~> 1.5'
 gem 'importmap-rails', '~> 2.0', '>= 2.0.1'
 
 gem 'foreman', '~> 0.87.2'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
-  gem 'dotenv-rails'
 end

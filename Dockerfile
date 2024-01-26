@@ -47,7 +47,7 @@ COPY --from=application_base /app /app
 
 # Run and access log and tmp as non-root user
 RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails log tmp
+    chown -R rails:rails log tmp public
 USER rails:rails
 
 # Expose port 3000 and start application

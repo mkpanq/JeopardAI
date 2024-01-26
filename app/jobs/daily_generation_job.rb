@@ -9,7 +9,7 @@ class DailyGenerationJob < ApplicationJob
     prompt, image_url = Generator.new.call
     redis = Redis.new
 
-    open("#{Rails.root}/app/assets/images/prompt_image.jpg", 'wb') do |file|
+    open("#{Rails.root}/public/prompt_image.jpg", 'wb') do |file|
       file << URI.open(image_url).read
     end
 
@@ -23,6 +23,5 @@ class DailyGenerationJob < ApplicationJob
     redis.set("generated_at", Date.today.to_formatted_s(:long))
     redis.set("prompt", prompt)
     redis.set("prompt_helper", prompt_helper)
-    redis.set("image_url", image_url)
   end
 end
