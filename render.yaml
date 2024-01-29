@@ -30,3 +30,8 @@ envVarGroups:
         value: gpt-3.5-turbo
       - key: OPEN_AI_TEXT_MODEL
         value: gpt-3.5-turbo
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: jeopardAi-redis
+          property: connectionString
