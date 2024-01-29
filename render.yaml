@@ -8,7 +8,7 @@ services:
     envVars:
       - key: RAILS_MASTER_KEY
         sync: false
-      - fromGroup: app-envs
+      - fromGroup: jeopardAi-envs
   - type: redis
     name: jeopardAi-redis
     ipAllowList: []
