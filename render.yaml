@@ -8,6 +8,11 @@ services:
     envVars:
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: jeopardAi-redis
+          property: connectionString
       - fromGroup: jeopardAi-envs
   - type: redis
     name: jeopardAi-redis
@@ -30,8 +35,3 @@ envVarGroups:
         value: gpt-3.5-turbo
       - key: OPEN_AI_TEXT_MODEL
         value: gpt-3.5-turbo
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: jeopardAi-redis
-          property: connectionString
