@@ -1,0 +1,32 @@
+services:
+  - type: web
+    runtime: docker
+    name: jeopardai-app
+    region: frankfurt
+    plan: free
+    healthCheckPath: /up
+    envVars:
+      - fromGroup: app-envs
+  - type: redis
+    name: jeopardai-redis
+    ipAllowList: []
+    plan: free
+    region: frankfurt
+
+envVarGroups:
+  - name: app-envs
+    envVars:
+      - key: OPEN_AI_IMAGE_GENERATOR_URL
+        value: https://api.openai.com/v1/images/generations
+      - key: OPEN_AI_IMAGE_MODEL
+        value: dall-e-3
+      - key: OPEN_AI_IMAGE_DEFAULT_SIZE
+        value: 1024x1024
+      - key: OPEN_AI_TEXT_GENERATOR_URL
+        value: https://api.openai.com/v1/chat/completions
+      - key: OPEN_AI_TEXT_MODEL
+        value: gpt-3.5-turbo
+      - key: OPEN_AI_TEXT_MODEL
+        value: gpt-3.5-turbo
+      - key: RAILS_MASTER_KEY
+        sync: false
