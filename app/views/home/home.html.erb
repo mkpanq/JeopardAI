@@ -1,5 +1,5 @@
-<div>
-  <%= image_tag("/prompt_image.jpg") %>
+<div class="grow space-y-8 mx-2">
+  <%= image_tag("/prompt_image.jpg", class: 'rounded-md mx-auto') %>
 
   <div class="flex flex-row flex-wrap justify-center">
     <% @prompt_helper.split(";").each do |word| %>
@@ -7,9 +7,9 @@
     <% end %>
   </div>
 
-  <%= form_with url: "/answer", method: :post do |form| %>
-    <%= form.text_field "answer" %>
-    <%= form.submit "->" %>
+  <%= form_with url: "/answer", method: :post, class: 'flex flex-col px-4' do |form| %>
+    <%= form.text_field "answer", class: 'rounded-md' %>
+    <%= form.submit "Check", class: 'border rounded-md mx-8 mt-8 py-3' %>
   <% end %>
 
   <%= turbo_frame_tag 'answer_results_frame' do %><% end %>
