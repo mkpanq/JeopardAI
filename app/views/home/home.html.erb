@@ -1,26 +1,30 @@
 <div class="z-0"><%= image_tag("/prompt_image.jpg") %></div>
 <div class="grow bg-white -mt-10 z-50 rounded-t-[33px] shadow-[0_11px_30px_19px_black] flex flex-col justify-between">
-  <div class="grow mx-auto space-y-10 pt-10">
+  <div class="grow mx-auto pt-10">
     <div class="font-light space-y-2">
       <p class="text-[24px]">Guess today's prompt !</p>
       <p class="text-[13px]"><%= @generated_at %></p>
     </div>
 
-    <div class="flex flex-row flex-wrap justify-center text-[15px] font-light">
+    <div class="flex flex-row flex-wrap justify-center text-[15px] font-light mt-8">
       <% @prompt_helper.split(";").each do |word| %>
         <span><%= word %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
       <% end %>
     </div>
 
-    <div>
-      <%= form_with url: "/answer", method: :post, class: 'flex flex-col px-10' do |form| %>
+    <%= turbo_frame_tag 'answer_results_frame' do %>
+      <div class="py-4"><br/></div>
+    <% end %>
+
+    <div class="px-10">
+      <%= form_with url: "/answer", method: :post, class: 'flex flex-col' do |form| %>
         <%= form.text_field "answer", class: "shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)] border-[0.50px]  border-[#B3B3B3] rounded-md" %>
-        <%= form.submit "Check", class: 'mt-8 py-3 mx-24 rounded-md bg-gradient-to-r from-green-400 to-blue-500 text-white font-extralight text-[16px] shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)]' %>
+        <%= form.submit "Check", class: 'mt-4 py-2 mx-20 rounded-md bg-gradient-to-r from-green-400 to-blue-500 text-white font-extralight text-[12px] shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)]' %>
       <% end %>
     </div>
   </div>
 
-  <div class="text-[10px] space-y-2 pb-4">
+  <div class="mt-4 text-[10px] space-y-2 pb-4">
     <div class="font-bold">JeopardAI</div>
     <div class="font-extralight">Created by Marek Pankowski © 2024</div>
     <div class="font-extralight">

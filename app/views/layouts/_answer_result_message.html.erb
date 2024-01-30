@@ -1,5 +1,9 @@
 <% if correct %>
-  <div><%= message %></div>
+  <div class="font-light text-zinc-800 mx-24 border-[#B3B3B3] bg-gradient-to-r from-yellow-200 to-green-500 my-3 py-1 rounded-xl shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)]">
+    <%= message %>
+  </div>
 <% else %>
-  <div><%= message %></div>
+  <div class="font-light text-white mx-24 border-[#B3B3B3] bg-gradient-to-r from-red-500 to-red-800 my-3 py-1 rounded-xl shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)]">
+    <%= message %>
+  </div>
 <% end %>
