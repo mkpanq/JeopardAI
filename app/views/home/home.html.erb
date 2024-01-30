@@ -1,35 +1,16 @@
-<div class="text-center flex flex-col min-h-screen justify-between">
-  <div class="space-y-8 py-5">
-    <div>
-      <p>JeopardAI</p>
-      <p>Guess today's prompt !</p>
-      <p><%= @generated_at %></p>
-    </div>
+<div>
+  <%= image_tag("/prompt_image.jpg") %>
 
-    <%= image_tag("/prompt_image.jpg") %>
-
-    <div class="flex flex-row flex-wrap justify-center">
-      <% @prompt_helper.split(";").each do |word| %>
-        <span><%= word %>&nbsp;&nbsp;</span>
-      <% end %>
-    </div>
-
-    <%= form_with url: "/answer", method: :post do |form| %>
-      <%= form.text_field "answer" %>
-      <%= form.submit "->" %>
+  <div class="flex flex-row flex-wrap justify-center">
+    <% @prompt_helper.split(";").each do |word| %>
+      <span><%= word %>&nbsp;&nbsp;</span>
     <% end %>
-
-    <%= turbo_frame_tag 'answer_results_frame' do %><% end %>
   </div>
 
-  <div class="mb-10">
-    <div>Created by Marek Pankowski &copy; <%= Date.today.year %></div>
-    <div>
-      <a href="https://mkpanq.com">mkpanq.com</a>
-      <a href="https://x.com/mkpanq">Twitter</a>
-      <a href="https://github.com/mkpanq">Github</a>
-      <a href="https://bento.me/mkpanq">Bento</a>
-      <a href="https://ko-fi.com/mkpanq">Ko-Fi</a>
-    </div>
-  </div>
+  <%= form_with url: "/answer", method: :post do |form| %>
+    <%= form.text_field "answer" %>
+    <%= form.submit "->" %>
+  <% end %>
+
+  <%= turbo_frame_tag 'answer_results_frame' do %><% end %>
 </div>

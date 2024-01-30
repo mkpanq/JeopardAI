@@ -10,7 +10,9 @@
     <%= stylesheet_link_tag "application" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class="min-h-screen flex flex-col justify-between text-center">
+    <%= render 'home/header' %>
     <%= yield %>
+    <%= render 'home/footer' %>
   </body>
 </html>
