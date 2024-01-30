@@ -15,39 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   </head>
   <body class="h-screen min-w-fit flex flex-col justify-between text-center">
-    <div class="z-0"><%= image_tag("/prompt_image.jpg") %></div>
-    <div class="grow bg-white -mt-10 z-50 rounded-t-[33px] shadow-[0_11px_30px_19px_black] flex flex-col justify-between">
-      <div class="grow mx-auto space-y-10 pt-10">
-        <div class="font-light space-y-2">
-          <p class="text-[24px]">Guess today's prompt !</p>
-          <p class="text-[13px]"><%= @generated_at %></p>
-        </div>
-
-        <div class="flex flex-row flex-wrap justify-center text-[15px] font-light">
-          <% @prompt_helper.split(";").each do |word| %>
-            <span><%= word %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <% end %>
-        </div>
-
-        <div>
-          <%= form_with url: "/answer", method: :post, class: 'flex flex-col px-10' do |form| %>
-            <%= form.text_field "answer", class: "shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)] border-[0.50px]  border-[#B3B3B3] rounded-md" %>
-            <%= form.submit "Check", class: 'mt-8 py-3 mx-24 rounded-md bg-gradient-to-r from-green-400 to-blue-500 text-white font-extralight text-[16px] shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)]' %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="text-[10px] space-y-2 pb-4">
-        <div class="font-bold">JeopardAI</div>
-        <div class="font-extralight">Created by Marek Pankowski © 2024</div>
-        <div class="font-extralight">
-          <a href="https://mkpanq.com">mkpanq.com</a> |
-          <a href="https://x.com/mkpanq">Twitter</a> |
-          <a href="https://github.com/mkpanq">Github</a> |
-          <a href="https://bento.me/mkpanq">Bento</a> |
-          <a href="https://ko-fi.com/mkpanq">Ko-Fi</a>
-        </div>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>
