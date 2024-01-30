@@ -1,13 +1,5 @@
 <% if correct %>
-  <div class="mx-auto font-bold text-center text-white space-y-3 max-w-[512px]
-              bg-gradient-to-br from-green-300 via-green-500 to-green-700
-              shadow-md rounded-xl px-10 py-3">
-    <%= message %>
-  </div>
+  <div><%= message %></div>
 <% else %>
-  <div class="mx-auto font-bold text-center text-white space-y-3 max-w-[512px]
-              bg-gradient-to-br from-yellow-600 to-red-600
-              shadow-md rounded-xl px-10 py-3">
-    <%= message %>
-  </div>
+  <div><%= message %></div>
 <% end %>

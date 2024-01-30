@@ -7,6 +7,6 @@
   :schedule:
     DailyGenerationJob:
       every: ['24h', first_in: '3s']
-      enabled: true
+      enabled: false
       queue: default
       description: "Generate daily Open AI image jeopardy"
