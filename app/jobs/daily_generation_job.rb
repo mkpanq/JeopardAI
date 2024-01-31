@@ -8,7 +8,7 @@ class DailyGenerationJob < ApplicationJob
 
   def perform(*args)
     prompt, image_url = Generator.new.call
-    redis = RedisConnection.connection
+    redis = Clients::RedisConnection.connection
 
     open("#{Rails.root}/public/prompt_image.jpg", 'wb') do |file|
       file << URI.open(image_url).read
