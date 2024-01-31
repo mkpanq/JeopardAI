@@ -18,7 +18,7 @@ class HomeController < ApplicationController
   private
 
   def get_redis_client
-    @redis ||= Redis.new
+    @redis ||= RedisConnection.connection
   end
 
   def get_prompt_helpers

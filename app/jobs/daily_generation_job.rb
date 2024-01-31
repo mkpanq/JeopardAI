@@ -1,13 +1,14 @@
 require "sidekiq-scheduler"
 require "redis"
 require "open-uri"
+require 'clients/redis_connection'
 
 class DailyGenerationJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
     prompt, image_url = Generator.new.call
-    redis = Redis.new
+    redis = RedisConnection.connection
 
     open("#{Rails.root}/public/prompt_image.jpg", 'wb') do |file|
       file << URI.open(image_url).read

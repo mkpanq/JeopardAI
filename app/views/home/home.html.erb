@@ -1,15 +1,15 @@
-<div class="z-0 mx-auto md:max-w-[512px] md:my-10">
+<div class="z-0 mx-auto md:max-w-[512px] xl:max-w-[605px] md:my-5 xl:my-auto">
   <%= image_tag("/prompt_image.jpg", class: 'md:rounded-xl md:shadow-lg') %>
 </div>
 
-<div class="max-md:grow bg-white -mt-10 z-50 rounded-t-[33px] shadow-[0_11px_30px_19px_black] flex flex-col justify-between md:mt-0 md:mx-auto md:px-16 md:py-4 md:rounded-xl md:shadow-xl md:shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)]">
+<div class="max-md:grow bg-white -mt-10 z-50 rounded-t-[33px] shadow-[0_11px_30px_19px_black] flex flex-col justify-between md:mt-0 md:mx-auto md:px-16 md:py-4 md:rounded-xl md:shadow-xl md:shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)] xl:my-auto">
   <div class="grow mx-auto pt-10">
     <div class="font-light space-y-2">
       <p class="text-[24px] md:text-[32px]">Guess today's prompt !</p>
       <p class="text-[13px] md:text-[22px]"><%= @generated_at %></p>
     </div>
 
-    <div class="flex flex-row flex-wrap justify-center text-[15px] font-light mt-8 md:text-[22px]">
+    <div class="flex flex-row flex-wrap justify-center text-[15px] font-light mt-8 px-4 md:text-[22px]">
       <% @prompt_helper.split(";").each do |word| %>
         <span><%= word %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
       <% end %>
@@ -19,7 +19,7 @@
       <div class="py-4 md:py-9"><br/></div>
     <% end %>
 
-    <div class="px-10">
+    <div class="px-14">
       <%= form_with url: "/answer", method: :post, class: 'flex flex-col' do |form| %>
         <%= form.text_field "answer", class: "shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)] border-[0.50px] border-[#B3B3B3] rounded-md" %>
         <%= form.submit "Check", class: 'mt-4 py-2 px-3 mx-20 rounded-md bg-gradient-to-r from-green-400 to-blue-500 text-white font-extralight text-[12px] shadow-[0_2px_2px_0px_rgba(0,0,0,0.25)] md:text-[22px]' %>

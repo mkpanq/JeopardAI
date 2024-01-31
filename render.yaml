@@ -23,15 +23,17 @@ services:
 envVarGroups:
   - name: jeopardAi-envs
     envVars:
+      - key: REDIS_CONNECTION_POOL_SIZE
+        value: "45"
       - key: OPEN_AI_IMAGE_GENERATOR_URL
-        value: https://api.openai.com/v1/images/generations
+        value: "https://api.openai.com/v1/images/generations"
       - key: OPEN_AI_IMAGE_MODEL
-        value: dall-e-3
+        value: "dall-e-3"
       - key: OPEN_AI_IMAGE_DEFAULT_SIZE
-        value: 1024x1024
+        value: "1024x1024"
       - key: OPEN_AI_TEXT_GENERATOR_URL
-        value: https://api.openai.com/v1/chat/completions
+        value: "https://api.openai.com/v1/chat/completions"
       - key: OPEN_AI_TEXT_MODEL
-        value: gpt-3.5-turbo
+        value: "gpt-3.5-turbo"
       - key: OPEN_AI_TEXT_MODEL
-        value: gpt-3.5-turbo
+        value: "gpt-3.5-turbo"

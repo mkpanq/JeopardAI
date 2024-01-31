@@ -14,7 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   </head>
-  <body class="h-screen min-w-fit flex flex-col max-md:justify-between text-center md:bg-gradient-to-b from-slate-900 via-slate-400 to-gray-100">
-    <%= yield %>
+  <body class="flex justify-center min-h-screen min-w-fit text-center md:bg-gradient-to-b from-slate-900 via-slate-400 to-gray-100">
+    <div class="flex flex-col max-md:justify-between xl:flex-row xl:justify-between xl:max-w-[1500px] xl:mx-auto xl:space-x-8">
+        <%= yield %>
+    </div>
   </body>
 </html>
