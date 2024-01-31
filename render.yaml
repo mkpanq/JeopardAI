@@ -5,6 +5,7 @@ services:
     region: frankfurt
     plan: free
     healthCheckPath: /up
+    autoDeploy: false
     envVars:
       - key: RAILS_MASTER_KEY
         sync: false
